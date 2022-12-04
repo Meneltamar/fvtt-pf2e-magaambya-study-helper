@@ -13,7 +13,7 @@ export function levelingDialog(
   actor,
   lore: string
 ) {
-  const skill_list = Skills[branch];
+  const skill_list = [...Skills[branch]];
   skill_list.push(lore);
   const options = Object.entries(skill_list)
     .map(([arrayPos, displayName]) => [
