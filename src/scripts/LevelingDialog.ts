@@ -7,14 +7,14 @@ declare const token: Token;
 declare const actor: Actor;
 // All actions here are pulled from "game.pf2e.actions"
 
-export function levelingDialog(
-  branch: Branches,
-  currentLevel: number,
-  actor,
-  lore: string
-) {
+export function levelingDialog(branch: Branches, currentLevel: number, actor) {
   const skill_list = [...Skills[branch]];
-  skill_list.push(lore);
+  if (branch == Branches.Uzunjati) {
+    const lores: string[] = actor.items
+      .filter((item) => item.type == "lore")
+      .map((lore) => lore.name);
+    skill_list.push(...lores);
+  }
   const options = Object.entries(skill_list)
     .map(([arrayPos, displayName]) => [
       `<option value="${displayName}">${displayName}</option>`,
@@ -36,7 +36,7 @@ export function levelingDialog(
         label: "<span class='pf2-icon'>1</span> Roll selected skill",
         callback: (html: any) => {
           const skill = html.find("[name=skill-selector]")[0].value as string;
-          actor.skills[skill.toLowerCase()].check.roll({ dc: dc });
+          actor.skills[slugify(skill)].check.roll({ dc: dc });
         },
       },
       cancel: {
