@@ -36,7 +36,7 @@ jobs:
       - name: Build with webpack
         id: build_webpack
         run: |
-          npm ci
+          npm install
           npm run build
 
       # Create a zip file with all files required by the module to add to the release
