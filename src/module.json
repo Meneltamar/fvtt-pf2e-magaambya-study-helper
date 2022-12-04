@@ -1,13 +1,13 @@
 {
   "name": "magaambya-study-helper",
   "title": "Magaambya Study Helper",
-  "description": "",
+  "description": "Helps manage the day-to-day studying at the Magaambya.",
   "version": "This is auto replaced",
   "library": "false",
   "manifestPlusVersion": "1.0.0",
   "compatibility":{
     "minimum": "10",
-    "verified": "10.284"
+    "verified": "10.291"
   },
   "authors": [
     {
@@ -32,6 +32,15 @@
       "path": "languages/en.json"
     }
   ],
+  "relationships": {
+    "systems": [{
+      "id": "pf2e",
+      "type": "system",
+      "compatibility": {
+        "minimum": "4.0.0"
+      }
+    }]
+  },
   "url": "This is auto replaced",
   "manifest": "This is auto replaced",
   "download": "This is auto replaced",

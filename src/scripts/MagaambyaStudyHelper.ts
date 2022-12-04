@@ -43,20 +43,31 @@ export class MaagambyaStudyHelper {
     });
     Hooks.on("renderBranchOverviewForm", (app, html, obj) => {
       let actor = app.object;
-      const { firstBranchLevel, secondBranchLevel, firstBranch, secondBranch } =
-        actor.getFlag(
-          MaagambyaStudyHelper.ID,
-          MaagambyaStudyHelper.FLAGS.BRANCHDATA
-        );
+      const {
+        firstBranchLevel,
+        secondBranchLevel,
+        firstBranch,
+        secondBranch,
+        firstBranchLore,
+        secondBranchLore,
+      } = actor.getFlag(
+        MaagambyaStudyHelper.ID,
+        MaagambyaStudyHelper.FLAGS.BRANCHDATA
+      );
       const button = $("#firstBranchButton") as JQuery<HTMLButtonElement>;
       button.on("click", function () {
-        levelingDialog(firstBranch, firstBranchLevel, actor);
+        levelingDialog(firstBranch, firstBranchLevel, actor, firstBranchLore);
       });
       const secondbutton = $(
         "#secondBranchButton"
       ) as JQuery<HTMLButtonElement>;
       secondbutton.on("click", function () {
-        levelingDialog(secondBranch, secondBranchLevel, actor);
+        levelingDialog(
+          secondBranch,
+          secondBranchLevel,
+          actor,
+          secondBranchLore
+        );
       });
     });
   }
@@ -66,6 +77,7 @@ type BranchOverviewData = {
   branches: Branches[];
   actor: Actor;
   magaambyaData: BranchData;
+  lores: string[];
 };
 
 class BranchOverviewForm extends FormApplication<
@@ -123,6 +135,9 @@ class BranchOverviewForm extends FormApplication<
       ],
       actor: this.actor,
       magaambyaData: this.magaambyaData,
+      lores: this.actor.items
+        .filter((item) => item.type == "lore")
+        .map((lore) => lore.name),
     };
   }
 
@@ -134,11 +149,11 @@ class BranchOverviewForm extends FormApplication<
     const updatedFlag: BranchData = {
       firstBranch: formData.firstBranch,
       firstBranchLevel: formData.firstBranchLevel,
-      // firstBranchLore: formData.firstBranchLore,
+      firstBranchLore: formData.firstBranchLore,
       firstBranchStars: 0,
       secondBranch: formData.secondBranch,
       secondBranchLevel: formData.secondBranchLevel,
-      // secondBranchLore: formData.secondBranchLore,
+      secondBranchLore: formData.secondBranchLore,
       secondBranchStars: 0,
     };
     this.actor.setFlag(
