@@ -36,32 +36,7 @@ export function levelingDialog(
         label: "<span class='pf2-icon'>1</span> Roll selected skill",
         callback: (html: any) => {
           const skill = html.find("[name=skill-selector]")[0].value as string;
-          if (skill.toLowerCase() in SKILL_DICTIONARY_REVERSE) {
-            actor.skills[skill.toLowerCase()].check.roll({ dc: dc });
-          } else {
-            const skillKey = slugify(skill);
-            const options = actor.getRollOptions([
-              "all",
-              "skill-check",
-              skillKey,
-            ]);
-            game.pf2e.Check.roll(
-              new game.pf2e.CheckModifier(
-                `<p class="compact-text">${skill} Skill Check</p>`,
-                actor.system.skills[skillKey],
-                []
-              ),
-              {
-                actor: actor,
-                type: "skill-check",
-                options,
-                dc: {
-                  value: dc,
-                },
-              },
-              event
-            );
-          }
+          actor.skills[skill.toLowerCase()].check.roll({ dc: dc });
         },
       },
       cancel: {
