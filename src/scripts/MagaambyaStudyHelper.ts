@@ -1,6 +1,6 @@
 import { BranchData } from "src/data/actor-data";
 import { Branches, Skills } from "../data/branches";
-import { levellingDialog } from "./LevelingDialog";
+import { levelingDialog } from "./LevelingDialog";
 
 declare const game: Game;
 
@@ -15,7 +15,6 @@ export class MaagambyaStudyHelper {
 
   static TEMPLATES = {
     branchOverview: `modules/${this.ID}/templates/branch-overview.html`,
-    levellingDialog: `modules/${this.ID}/templates/levelling-dialog.html`,
   };
 
   static log(force, ...args) {
@@ -51,13 +50,13 @@ export class MaagambyaStudyHelper {
         );
       const button = $("#firstBranchButton") as JQuery<HTMLButtonElement>;
       button.on("click", function () {
-        levellingDialog(firstBranch, firstBranchLevel, actor);
+        levelingDialog(firstBranch, firstBranchLevel, actor);
       });
       const secondbutton = $(
         "#secondBranchButton"
       ) as JQuery<HTMLButtonElement>;
       secondbutton.on("click", function () {
-        levellingDialog(secondBranch, secondBranchLevel, actor);
+        levelingDialog(secondBranch, secondBranchLevel, actor);
       });
     });
   }

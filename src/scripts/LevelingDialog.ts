@@ -5,7 +5,7 @@ declare const token: Token;
 declare const actor: Actor;
 // All actions here are pulled from "game.pf2e.actions"
 
-export function levellingDialog(branch: Branches, currentLevel: number, actor) {
+export function levelingDialog(branch: Branches, currentLevel: number, actor) {
   const skill_list = Skills[branch];
 
   const options = Object.entries(skill_list)

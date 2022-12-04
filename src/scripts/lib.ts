@@ -1,4 +1,5 @@
 import { MaagambyaStudyHelper } from "./MagaambyaStudyHelper";
+import { levelingDialog } from "./LevelingDialog";
 
 MaagambyaStudyHelper.initialize();
 

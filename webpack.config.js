@@ -33,6 +33,9 @@ module.exports = {
   },
   devtool: isProductionBuild ? undefined : "inline-source-map",
   watch: !isProductionBuild,
+  optimization: {
+    minimize: false,
+  },
 
   // loaders
   module: {
