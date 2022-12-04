@@ -1,0 +1,37 @@
+<form class="flexcol">
+    <div class="form-group">
+        <div class="row" style="display:flex">
+        <div class="column" style="flex:40%">
+            <label for="firstBranch">Branch 1</label><br>
+            <select type="text" name="firstBranch">
+                {{#each branches}}
+                <option value="{{this}}">{{this}}</option>
+                {{/each}}
+            </select><br>
+            <label for="firstBranchLevel">First Branch Level</label>
+            <input type="number" name="firstBranchLevel" min="0", max="20">
+            <label for="firstBranchLore">First Branch Lore</label>
+            <input type="text" name="firstBranchLore">
+            <button class="flexrow" type="button">Roll Branch</button>
+        </div>
+        <div class="column" style="flex:10%"></div>
+        <div class="column" style="flex:40%">
+            <label for="secondBranch">Branch 2</label><br>
+            <select type="text" name="secondBranch">
+                {{#each branches}}
+                <option value="{{this}}">{{this}}</option>
+                {{/each}}
+            </select><br>
+            <label for="secondBranchLevel">Second Branch Level</label>
+            <input type="number" name="secondBranchLevel" min="0", max="20">
+            <label for="secondBranchLore">Second Branch Lore</label>
+            <input type="text" name="secondBranchLore">
+        </div>
+    </div>
+</div>
+    <footer class="sheet-footer flexrow">
+      <button type="submit" name="submit">
+          <i class="fa fa-check"></i> OK
+      </button>
+    </footer>
+  </form>

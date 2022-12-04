@@ -1,0 +1,7 @@
+node_modules
+.idea
+.env
+.prettierrc
+/package-lock.json
+/dist
+/package

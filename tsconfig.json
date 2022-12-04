@@ -1,0 +1,23 @@
+{
+  "compilerOptions": {
+    "outDir": "/home/ubuntu/foundrydata/Data/modules/comprehend-languages/",
+    "rootDir": "src",
+    "allowJs": true,
+    "target": "ES2018",
+    "esModuleInterop": true,
+    "sourceMap": true,
+    "noImplicitReturns": true,
+    "moduleResolution": "node",
+    "resolveJsonModule": true,
+    "baseUrl": ".",
+    "types": ["@league-of-foundry-developers/foundry-vtt-types", "jest"],
+    "paths": {
+      "@lib/*": ["src/scripts/lib/*"]
+    },
+    "typeRoots": ["node_modules/@types", "node_modules/handlebars"]
+  },
+  "include": ["./src/**/*", "./src/**/*.json", "./src/**/*.css"],
+  "ts-node": {
+    "files": true
+  }
+}
