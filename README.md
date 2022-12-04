@@ -1,13 +1,13 @@
 # What is Magaambya Study Helper
 
-The Magaambya Study Helper helps you keep track of your levels in the branches of the Magaambya. It also support you in rolling for Studying/Research.
+The Magaambya Study Helper is a module for the Pathfinder 2e Foundry system. It is specifically made for parties playing through the "Strength of Thousands" Adventure Paths. The module helps you keep track of your current levels in the branches of the Magaambya. It also supports you with Study/Research rolls made when trying to level up in those branches.
 
 # How does it work?
 
 When you open a Player Character Actor, the header will have a new button "Magaambya Helper". Click on that button and in the popup that opens, you can configure your current branches and branch levels.
 ![Sheet Header](img/actor-header.png)
 
-Change your branch and levels in this popup and click "OK" to save the changes to the actor.
+Change your branch, levels and one of your Lores per branch in this popup and click "OK" to save the changes to the actor.
 
 ![Branch Popout](img/branch-overview.png)
 
