@@ -9,9 +9,33 @@ export enum Branches {
 type skills = Partial<Record<Branches, string[]>>;
 
 export const Skills: skills = {
-  "Cascade Bearers": ["arcana", "occultism", "religion", "academia-lore"],
-  "Emerald Boughs": ["deception", "diplomacy", "society"],
-  "Rain Scribes": ["medicine", "nature", "survival"],
-  "Tempest-Sun Mages": ["intimidation", "performance", "warfare-lore"],
-  Uzunjati: ["crafting"],
+  "Cascade Bearers": ["Arcana", "Occultism", "Religion"],
+  "Emerald Boughs": ["Deception", "Diplomacy", "Society"],
+  "Rain Scribes": ["Medicine", "Nature", "Survival"],
+  "Tempest-Sun Mages": ["Intimidation", "Performance"],
+  Uzunjati: ["Crafting"],
 };
+
+export const SKILL_DICTIONARY = {
+  acr: "acrobatics",
+  arc: "arcana",
+  ath: "athletics",
+  cra: "crafting",
+  dec: "deception",
+  dip: "diplomacy",
+  itm: "intimidation",
+  med: "medicine",
+  nat: "nature",
+  occ: "occultism",
+  prf: "performance",
+  rel: "religion",
+  soc: "society",
+  ste: "stealth",
+  sur: "survival",
+  thi: "thievery",
+} as const;
+export const SKILL_LONG_FORMS = new Set(Object.values(SKILL_DICTIONARY));
+
+export const SKILL_DICTIONARY_REVERSE = Object.fromEntries(
+  Object.entries(SKILL_DICTIONARY).map(([abbrev, value]) => [value, abbrev])
+);

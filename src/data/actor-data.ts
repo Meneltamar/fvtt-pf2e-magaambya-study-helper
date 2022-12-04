@@ -10,14 +10,3 @@ export type BranchData = {
   secondBranchLore: string;
   secondBranchStars: number;
 };
-
-let Misty: BranchData = {
-  firstBranch: Branches.CascadeBearers,
-  secondBranch: Branches.EmeraldBoughs,
-  firstBranchLevel: 2,
-  secondBranchLevel: 3,
-  firstBranchStars: 0,
-  secondBranchStars: 0,
-  firstBranchLore: "Warfare Lore",
-  secondBranchLore: "Your Mama Lore",
-};

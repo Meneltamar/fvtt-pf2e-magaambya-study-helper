@@ -1,6 +1,6 @@
 {
   "compilerOptions": {
-    "outDir": "/home/ubuntu/foundrydata/Data/modules/comprehend-languages/",
+    "outDir": "/home/ubuntu/foundrydata10/Data/modules/magaambya-study-helper/",
     "rootDir": "src",
     "allowJs": true,
     "target": "ES2018",
