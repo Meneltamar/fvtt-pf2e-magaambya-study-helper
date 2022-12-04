@@ -83,6 +83,26 @@ class BranchOverviewForm extends FormApplication<
       MaagambyaStudyHelper.ID,
       MaagambyaStudyHelper.FLAGS.BRANCHDATA
     );
+    if (!this.magaambyaData) {
+      // @ts-ignore
+      actor.setFlag(
+        MaagambyaStudyHelper.ID,
+        MaagambyaStudyHelper.FLAGS.BRANCHDATA,
+        {
+          firstBranch: Branches.CascadeBearers,
+          firstBranchLevel: 0,
+          firstBranchStars: 0,
+          secondBranch: Branches.EmeraldBoughs,
+          secondBranchLevel: 0,
+          secondBranchStars: 0,
+        }
+      );
+      // @ts-ignore
+      this.magaambyaData = actor.getFlag(
+        MaagambyaStudyHelper.ID,
+        MaagambyaStudyHelper.FLAGS.BRANCHDATA
+      );
+    }
   }
 
   static get defaultOptions() {
@@ -115,11 +135,11 @@ class BranchOverviewForm extends FormApplication<
     const updatedFlag: BranchData = {
       firstBranch: formData.firstBranch,
       firstBranchLevel: formData.firstBranchLevel,
-      firstBranchLore: formData.firstBranchLore,
+      // firstBranchLore: formData.firstBranchLore,
       firstBranchStars: 0,
       secondBranch: formData.secondBranch,
       secondBranchLevel: formData.secondBranchLevel,
-      secondBranchLore: formData.secondBranchLore,
+      // secondBranchLore: formData.secondBranchLore,
       secondBranchStars: 0,
     };
     this.actor.setFlag(
