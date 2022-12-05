@@ -43,7 +43,7 @@ export function levelingDialog(branch: Branches, currentLevel: number, actor) {
           actor.skills[slugSkill].check.roll({
             extraRollOptions: options,
             dc: { 
-              label: `Study at ${branch}: ${skill}`,
+              label: `Study at ${branch}: ${skill} DC:`,
               value: dc,
               adjustments: [] },
           });
