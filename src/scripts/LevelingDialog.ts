@@ -42,7 +42,10 @@ export function levelingDialog(branch: Branches, currentLevel: number, actor) {
           const options = new Set(["action:study", Slugs[branch]]);
           actor.skills[slugSkill].check.roll({
             extraRollOptions: options,
-            dc: { value: dc, adjustments: [] },
+            dc: { 
+              label: `Study at ${branch}: ${skill}`,
+              value: dc,
+              adjustments: [] },
           });
         },
       },
