@@ -15,6 +15,7 @@ export function levelingDialog(branch: Branches, currentLevel: number, actor) {
       .map((lore) => lore.name);
     skill_list.push(...lores);
   }
+
   const options = Object.entries(skill_list)
     .map(([arrayPos, displayName]) => [
       `<option value="${displayName}">${displayName}</option>`,
@@ -38,7 +39,7 @@ export function levelingDialog(branch: Branches, currentLevel: number, actor) {
         callback: (html: any) => {
           const skill = html.find("[name=skill-selector]")[0].value as string;
           const slugSkill = slugify(skill);
-          const option = new Set(["action:study", Slugs[branch]]);
+          const options = new Set(["action:study", Slugs[branch]]);
           actor.skills[slugSkill].check.roll({
             extraRollOptions: options,
             dc: { value: dc, adjustments: [] },
