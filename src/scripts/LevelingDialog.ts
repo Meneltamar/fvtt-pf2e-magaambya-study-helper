@@ -27,6 +27,16 @@ export function levelingDialog(branch: Branches, currentLevel: number, actor) {
             <label>Skill:</label>
             <select name="skill-selector">${options}</select>
         </div>
+        <div class="form-group">
+          <label>Is Cram?</label>
+          <input name="isCram" type="checkbox">
+        </div>
+        ${branch === Branches.RainScribes 
+          ? `<div class="form-group">
+            <label>Is Highbram's Advantage?</label>
+            <input name="isFriendHighbram" type="checkbox">
+          </div>` 
+          : ''}
     </form>`;
 
   const dc = dcByLevel.get(currentLevel);
@@ -39,15 +49,23 @@ export function levelingDialog(branch: Branches, currentLevel: number, actor) {
         callback: (html: any) => {
           const skill = html.find("[name=skill-selector]")[0].value as string;
           const slugSkill = slugify(skill);
+
           const options = new Set(["action:study", Slugs[branch]]);
-          actor.skills[slugSkill].check.roll({
-            extraRollOptions: options,
-            dc: { 
-              label: `Study at ${branch}: ${skill} DC`,
-              value: dc,
-              adjustments: []
-            },
-          });
+          const isCram = html.find("[name=isCram]")[0]?.checked ?? false;
+          if (isCram) options.add("action:cram");
+          const isFriendHighbram = html.find("[name=isFriendHighbram]")[0]?.checked ?? false;
+          const amount = 1 + Number(isCram) + Number(isCram && isFriendHighbram);
+
+          for (let i = 0;i < amount; i++) {
+            actor.skills[slugSkill].check.roll({
+              extraRollOptions: options,
+              dc: { 
+                label: `${isCram ? 'Cram' : 'Study'} at ${branch}: ${skill} DC`,
+                value: dc,
+                adjustments: []
+              },
+            });
+          }
         },
       },
       cancel: {
