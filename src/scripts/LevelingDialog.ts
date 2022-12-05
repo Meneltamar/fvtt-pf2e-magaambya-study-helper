@@ -37,7 +37,9 @@ export function levelingDialog(branch: Branches, currentLevel: number, actor) {
         callback: (html: any) => {
           const skill = html.find("[name=skill-selector]")[0].value as string;
           const slugSkill = slugify(skill);
-          actor.skills[slugSkill].check.roll({ dc: dc });
+          actor.skills[slugSkill].check.roll({
+            dc: { value: dc, adjustments: [] },
+          });
         },
       },
       cancel: {
