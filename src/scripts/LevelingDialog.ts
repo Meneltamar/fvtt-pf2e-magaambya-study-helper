@@ -36,7 +36,8 @@ export function levelingDialog(branch: Branches, currentLevel: number, actor) {
         label: "<span class='pf2-icon'>1</span> Roll selected skill",
         callback: (html: any) => {
           const skill = html.find("[name=skill-selector]")[0].value as string;
-          actor.skills[slugify(skill)].check.roll({ dc: dc });
+          const slugSkill = slugify(skill);
+          actor.skills[slugSkill].check.roll({ dc: dc });
         },
       },
       cancel: {

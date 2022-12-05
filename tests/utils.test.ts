@@ -7,9 +7,9 @@ test("test slugification", () => {
 });
 
 test("test slugification without spaces", () => {
-  const inputStr = "Warfare";
+  const inputStr = "Arcana";
   const outputString = slugify(inputStr);
-  expect(outputString).toStrictEqual("warfare");
+  expect(outputString).toStrictEqual("arcana");
 });
 
 test("test slugification with multiple spaces", () => {
