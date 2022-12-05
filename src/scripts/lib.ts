@@ -1,7 +1,7 @@
-import { MaagambyaStudyHelper } from "./MagaambyaStudyHelper";
+import { MagaambyaStudyHelper } from "./MagaambyaStudyHelper";
 import { levelingDialog } from "./LevelingDialog";
 
-MaagambyaStudyHelper.initialize();
+MagaambyaStudyHelper.initialize();
 
 Handlebars.registerHelper("ifEquals", function (arg1, arg2, options) {
   return arg1 == arg2 ? options.fn(this) : options.inverse(this);
