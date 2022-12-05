@@ -1,4 +1,4 @@
-import { Branches, Skills } from "../data/branches";
+import { Branches, Skills, Slugs } from "../data/branches";
 import { dcByLevel } from "../utils/dcByLevel";
 import { SKILL_DICTIONARY_REVERSE } from "../data/branches";
 import { slugify } from "../utils/slugify";
@@ -27,6 +27,7 @@ export function levelingDialog(branch: Branches, currentLevel: number, actor) {
             <select name="skill-selector">${options}</select>
         </div>
     </form>`;
+
   const dc = dcByLevel.get(currentLevel);
   new Dialog({
     title: "Choose which skill to roll",
@@ -37,7 +38,9 @@ export function levelingDialog(branch: Branches, currentLevel: number, actor) {
         callback: (html: any) => {
           const skill = html.find("[name=skill-selector]")[0].value as string;
           const slugSkill = slugify(skill);
+          const option = new Set(["action:study", Slugs[branch]]);
           actor.skills[slugSkill].check.roll({
+            extraRollOptions: options,
             dc: { value: dc, adjustments: [] },
           });
         },

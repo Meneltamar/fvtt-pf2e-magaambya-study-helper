@@ -16,6 +16,16 @@ export const Skills: skills = {
   Uzunjati: ["Crafting"],
 };
 
+type slugs = Record<Branches, string>;
+
+export const Slugs: slugs = {
+  "Cascade Bearers": "branch:cascade-bearers",
+  "Emerald Boughs": "branch:emerald-boughs",
+  "Rain Scribes": "branch:rain-scribes",
+  "Tempest-Sun Mages": "branch:tempest-sun-mages",
+  Uzunjati: "branch:uzunjati",
+};
+
 export const SKILL_DICTIONARY = {
   acr: "acrobatics",
   arc: "arcana",
