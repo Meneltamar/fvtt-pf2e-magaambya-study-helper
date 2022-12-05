@@ -1,10 +1,9 @@
-import { BranchData } from "src/data/actor-data";
-import { Branches, Skills } from "../data/branches";
 import { levelingDialog } from "./LevelingDialog";
+import { BranchOverviewForm } from "./BranchOverviewForm";
 
 declare const game: Game;
 
-export class MaagambyaStudyHelper {
+export class MagaambyaStudyHelper {
   static ID = "magaambya-study-helper";
 
   static FLAGS = {
@@ -44,10 +43,7 @@ export class MaagambyaStudyHelper {
     Hooks.on("renderBranchOverviewForm", (app, html, obj) => {
       let actor = app.object;
       const { firstBranchLevel, secondBranchLevel, firstBranch, secondBranch } =
-        actor.getFlag(
-          MaagambyaStudyHelper.ID,
-          MaagambyaStudyHelper.FLAGS.BRANCHDATA
-        );
+        actor.getFlag(this.ID, this.FLAGS.BRANCHDATA);
       const button = $("#firstBranchButton") as JQuery<HTMLButtonElement>;
       button.on("click", function () {
         levelingDialog(firstBranch, firstBranchLevel, actor);
@@ -59,92 +55,5 @@ export class MaagambyaStudyHelper {
         levelingDialog(secondBranch, secondBranchLevel, actor);
       });
     });
-  }
-}
-
-type BranchOverviewData = {
-  branches: Branches[];
-  actor: Actor;
-  magaambyaData: BranchData;
-};
-
-class BranchOverviewForm extends FormApplication<
-  FormApplicationOptions,
-  BranchOverviewData
-> {
-  actor: any;
-  magaambyaData: BranchData;
-  constructor(actor: Actor) {
-    super(actor);
-    this.actor = actor;
-    // @ts-ignore
-    this.magaambyaData = actor.getFlag(
-      MaagambyaStudyHelper.ID,
-      MaagambyaStudyHelper.FLAGS.BRANCHDATA
-    );
-    if (!this.magaambyaData) {
-      // @ts-ignore
-      actor.setFlag(
-        MaagambyaStudyHelper.ID,
-        MaagambyaStudyHelper.FLAGS.BRANCHDATA,
-        {
-          firstBranch: Branches.CascadeBearers,
-          firstBranchLevel: 0,
-          firstBranchStars: 0,
-          secondBranch: Branches.EmeraldBoughs,
-          secondBranchLevel: 0,
-          secondBranchStars: 0,
-        }
-      );
-      // @ts-ignore
-      this.magaambyaData = actor.getFlag(
-        MaagambyaStudyHelper.ID,
-        MaagambyaStudyHelper.FLAGS.BRANCHDATA
-      );
-    }
-  }
-
-  static get defaultOptions() {
-    return mergeObject(super.defaultOptions, {
-      classes: ["form"],
-      popOut: true,
-      id: "branch-overview",
-      title: "Branch Overview",
-    });
-  }
-  getData() {
-    return {
-      branches: [
-        Branches.CascadeBearers,
-        Branches.EmeraldBoughs,
-        Branches.RainScribes,
-        Branches.TempestSunMages,
-        Branches.Uzunjati,
-      ],
-      actor: this.actor,
-      magaambyaData: this.magaambyaData,
-    };
-  }
-
-  get template(): string {
-    return MaagambyaStudyHelper.TEMPLATES.branchOverview;
-  }
-
-  protected async _updateObject(event: Event, formData?: any): Promise<void> {
-    const updatedFlag: BranchData = {
-      firstBranch: formData.firstBranch,
-      firstBranchLevel: formData.firstBranchLevel,
-      // firstBranchLore: formData.firstBranchLore,
-      firstBranchStars: 0,
-      secondBranch: formData.secondBranch,
-      secondBranchLevel: formData.secondBranchLevel,
-      // secondBranchLore: formData.secondBranchLore,
-      secondBranchStars: 0,
-    };
-    this.actor.setFlag(
-      MaagambyaStudyHelper.ID,
-      MaagambyaStudyHelper.FLAGS.BRANCHDATA,
-      updatedFlag
-    );
   }
 }
