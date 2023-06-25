@@ -8,7 +8,7 @@ const [outDir] = (() => {
     buildMode === "production"
       ? path.join(__dirname, "dist/")
       : path.join(
-          "/home/ubuntu/foundrydata10/Data/modules/magaambya-study-helper"
+          "/home/ubuntu/foundrydata11/Data/modules/magaambya-study-helper"
         );
   return [outDir];
 })();
